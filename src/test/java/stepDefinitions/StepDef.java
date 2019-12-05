@@ -14,10 +14,10 @@ public class Login_Steps{
 
 	String sName = null;
 	
-	private IDENTITYBaseTest Identitybasetest;
+	private IDENTITYBaseTest identitybasetest;
 	
-	public Login_Steps(IDENTITYBaseTest Identitybasetest) {
-		this.vastbasetest=vastbasetest;
+	public Login_Steps(IDENTITYBaseTest identitybasetest) {
+		this.identitybasetest=identitybasetest;
 	}
 	
 	@Before()
@@ -29,43 +29,43 @@ public class Login_Steps{
 	@After()
 	public void tearDown() throws Exception {		
 		System.out.println("Executing After of Step Defination");
-        Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
-		vastbasetest.driver.quit();
+        Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
+		identitybasetest.driver.quit();
 	}
 	
 	@Given("^User launches the application \"([^\"]*)\"$")
 	public void user_launches_the_application(String url) throws Throwable {
-		vastbasetest.driver.get(url);
-	    Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
+		identitybasetest.driver.get(url);
+	    Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
 	}
 
 	@Given("^user enters text \"([^\"]*)\" in textbox \"([^\"]*)\"$")
 	public void user_enters_text_in_textbox(String arg1, String arg2) throws Throwable {
-		vastbasetest.webelementHandler.enterText(ObjectRepository.getobjectLocator(arg2), arg1);
-		Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));
+		identitybasetest.webelementHandler.enterText(ObjectRepository.getobjectLocator(arg2), arg1);
+		Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));
 	}
 
 	@Given("^user clicks on button \"([^\"]*)\"$")
 	public void user_clicks_on_button(String arg1) throws Throwable {
 		if (arg1.equals("Printed_Signed")) {
-			System.out.println(vastbasetest.webelementHandler.getText("//tr[contains(@id,'documentSigning-table-rows')]"));
+			System.out.println(identitybasetest.webelementHandler.getText("//tr[contains(@id,'documentSigning-table-rows')]"));
 		}
-		vastbasetest.webelementHandler.clickButton(ObjectRepository.getobjectLocator(arg1));
-        Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
+		identitybasetest.webelementHandler.clickButton(ObjectRepository.getobjectLocator(arg1));
+        Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
 	}
 	
 	@Given("^user validates \"([^\"]*)\" with expected value \"([^\"]*)\"$")
 	public void user_validates_with_expected_value(String arg1, String arg2) throws Throwable {
-		System.err.println(vastbasetest.webelementHandler.getText(ObjectRepository.getobjectLocator(arg1)));
-		VerificationHandler.verifyTrue(vastbasetest.webelementHandler.getText(ObjectRepository.getobjectLocator(arg1)).contains(arg2));
-		Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
+		System.err.println(identitybasetest.webelementHandler.getText(ObjectRepository.getobjectLocator(arg1)));
+		VerificationHandler.verifyTrue(identitybasetest.webelementHandler.getText(ObjectRepository.getobjectLocator(arg1)).contains(arg2));
+		Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
 	}
 	
 	@Given("^user waits for page to load$")
 	public void user_waits_for_page_to_load() throws Throwable {
-		vastbasetest.webelementHandler.waitforinvisibilityofAllElements(ObjectRepository.getobjectLocator("Spinner"));
-		vastbasetest.webelementHandler.waitforinvisibilityofAllElements(ObjectRepository.getobjectLocator("Spinner1"));
-		Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
+		identitybasetest.webelementHandler.waitforinvisibilityofAllElements(ObjectRepository.getobjectLocator("Spinner"));
+		identitybasetest.webelementHandler.waitforinvisibilityofAllElements(ObjectRepository.getobjectLocator("Spinner1"));
+		Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
 		}
 	
     @Given("^user waits for \"(.*?)\" seconds$")
@@ -73,6 +73,6 @@ public class Login_Steps{
     {
        arg1 = arg1*1000;
     	Thread.sleep(arg1);
-		Reporter.addScreenCaptureFromPath(vastbasetest.screenshot.captureScreenShot(sName));  
+		Reporter.addScreenCaptureFromPath(identitybasetest.screenshot.captureScreenShot(sName));  
     } 
     
